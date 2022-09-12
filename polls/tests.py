@@ -108,12 +108,12 @@ class QuestionModelTests(TestCase):
     def test_is_published_with_old_question(self):
         time = timezone.now() - datetime.timedelta(days=1, seconds=1)
         old_question = Question(pub_date=time)
-        self.assertIs(old_question.is_published(), True)
+        self.assertIs(old_question.is_published(), False)
 
     def test_is_published_with_future_question(self):
         time = timezone.now() + datetime.timedelta(days=30)
         future_question = Question(pub_date=time)
-        self.assertIs(future_question.is_published(), False)
+        self.assertIs(future_question.is_published(), True)
 
     def test_can_vote_with_old_question(self):
         time = timezone.now() - datetime.timedelta(days=1, seconds=1)
@@ -123,7 +123,7 @@ class QuestionModelTests(TestCase):
     def test_can_vote_with_future_question(self):
         time = timezone.now() + datetime.timedelta(days=30)
         future_question = Question(pub_date=time)
-        self.assertIs(future_question.is_published(), False)
+        self.assertIs(future_question.is_published(), True)
 
 class QuestionDetailViewTests(TestCase):
     def test_future_question(self):
