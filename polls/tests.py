@@ -105,6 +105,9 @@ class QuestionModelTests(TestCase):
         recent_question = Question(pub_date=time)
         self.assertIs(recent_question.was_published_recently(), True)
 
+    def test_is_published(self):
+
+
 
 class QuestionDetailViewTests(TestCase):
     def test_future_question(self):
