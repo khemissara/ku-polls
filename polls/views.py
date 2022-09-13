@@ -6,6 +6,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+from django.contrib import messages
 
 
 class IndexView(generic.ListView):
@@ -26,6 +27,17 @@ class DetailView(generic.DetailView):
         Excludes any questions that aren't published yet.
         """
         return Question.objects.filter(pub_date__lte=timezone.now())
+
+    def get(self, request, question_id):
+        try:
+            self.question = get_object_or_404(Question, pk=question_id)
+        except (IndexError, Http404):
+            messages.error(request, 'Index error')
+        if not self.question.can_vote():
+            print('hello2')
+            messages.error(request, "This question can not be vote")
+            return HttpResponseRedirect(reverse('polls:index'))
+        return super().get(request, pk=question_id)
 
 
 class ResultsView(generic.DetailView):
