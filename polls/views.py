@@ -28,17 +28,17 @@ class DetailView(generic.DetailView):
         """
         return Question.objects.filter(pub_date__lte=timezone.now())
 
-    def get(self, request, question_id):
+    def get(self, request, pk):
         """error message"""
         try:
-            self.question = get_object_or_404(Question, pk=question_id)
+            self.question = get_object_or_404(Question, pk=pk)
         except (IndexError, Http404):
             messages.error(request, 'Index error')
         if not self.question.can_vote():
             print('hello2')
             messages.error(request, "This question can not be vote")
             return HttpResponseRedirect(reverse('polls:index'))
-        return super().get(request, pk=question_id)
+        return super().get(request, pk=pk)
 
 
 class ResultsView(generic.DetailView):
