@@ -29,6 +29,7 @@ class DetailView(generic.DetailView):
         return Question.objects.filter(pub_date__lte=timezone.now())
 
     def get(self, request, question_id):
+        """error message"""
         try:
             self.question = get_object_or_404(Question, pk=question_id)
         except (IndexError, Http404):
@@ -41,10 +42,12 @@ class DetailView(generic.DetailView):
 
 
 class ResultsView(generic.DetailView):
+    """this class display result"""
     model = Question
     template_name = 'polls/results.html'
 
 def vote(request, question_id):
+    """to update score of each vote"""
     question = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
@@ -63,4 +66,5 @@ def vote(request, question_id):
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
 def redirect_url(request):
+    """redirect the url"""
     return HttpResponseRedirect(reverse('polls:index'))
