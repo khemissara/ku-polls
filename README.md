@@ -18,4 +18,6 @@ All project documents are in the [Project Wiki](https://github.com/khemissara/ku
 
 [Project Plan](https://github.com/khemissara/ku-polls/wiki/Software-Development-Plan)
 
-[Iteration 1 Plan and Task Board](https://github.com/users/khemissara/projects/1)
+[Iteration 1 Plan and Task Board](https://github.com/users/khemissara/projects/1/views/1)
+
+[Iteration 2 Plan and Task Board](https://github.com/users/khemissara/projects/1/views/3)
