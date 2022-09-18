@@ -5,3 +5,11 @@ li a {
 body {
     background: blue;
 }
+
+.white {
+    color: white;
+}
+
+.bold {
+    font-weight: bold;
+}
