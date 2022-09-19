@@ -38,3 +38,18 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
+
+    def vote(self):
+        # count the votes for some_choice
+        count = Vote.objects.filter(choice=some_choice).count()
+        return count
+
+
+class Vote(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+    choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
+
+    @property
+    def question(self):
+        return self.choice.question
