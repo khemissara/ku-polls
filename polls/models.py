@@ -1,6 +1,7 @@
 import datetime
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class Question(models.Model):
@@ -38,3 +39,17 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
+
+    @property
+    def votes(self):
+        # count the votes for some_choice
+        return Vote.objects.filter(choice=self).count()
+
+class Vote(models.Model):
+
+    user = models.ForeignKey(User , on_delete=models.CASCADE, null=False)
+    choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
+
+    @property
+    def question(self):
+        return self.choice.question

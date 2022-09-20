@@ -22,4 +22,9 @@ All project documents are in the [Project Wiki](https://github.com/khemissara/ku
 
 [Iteration 2 Plan and Task Board](https://github.com/users/khemissara/projects/1/views/3)
 
-[Iteration 3 Plan and Task Board]
+[Iteration 3 Plan and Task Board](https://github.com/users/khemissara/projects/1/views/6)
+
+| Username  | Password  |
+|-----------|-----------|
+|   username1   | password112345 |
+|   username2   | password212345 |
