@@ -40,11 +40,10 @@ class Choice(models.Model):
     def __str__(self):
         return self.choice_text
 
-    def vote(self):
+    @property
+    def votes(self):
         # count the votes for some_choice
-        count = Vote.objects.filter(choice=some_choice).count()
-        return count
-
+        return Vote.objects.filter(choice=self).count()
 
 class Vote(models.Model):
 
