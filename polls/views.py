@@ -32,16 +32,22 @@ class DetailView(LoginRequiredMixin, generic.DetailView):
         return Question.objects.filter(pub_date__lte=timezone.now())
 
     def get(self, request, pk):
-        """error message"""
+        """To back to index page if not found"""
+        self.question = get_object_or_404(Question, pk=pk)
         try:
-            self.question = get_object_or_404(Question, pk=pk)
-        except (IndexError, Http404):
-            messages.error(request, 'Index error')
-        if not self.question.can_vote():
-            print('hello2')
-            messages.error(request, "This question can not be vote")
-            return HttpResponseRedirect(reverse('polls:index'))
-        return super().get(request, pk=pk)
+            vote = Vote.objects.get(user=request.user,
+                                    choice__in=self.question.choice_set.all())
+
+            previous_one = vote.choice.choice_text
+        except (Vote.DoesNotExist, TypeError):
+            previous_one = ""
+
+        if self.question.can_vote():
+            return render(request, self.template_name, {"question": self.question,
+                                                        "previous_vote": previous_one})
+        else:
+            messages.error(request, f"Poll number {self.question.id} is not available to vote")
+            return redirect("polls:index")
 
 
 class ResultsView(generic.DetailView):
