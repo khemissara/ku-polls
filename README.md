@@ -1,6 +1,5 @@
-[![codecov](https://codecov.io/gh/khemissara/ku-polls/branch/main/graph/badge.svg?token=DGK6O9QCZC)](https://codecov.io/gh/khemissara/ku-polls)
-
 [![Python package](https://github.com/khemissara/ku-polls/actions/workflows/python-package.yml/badge.svg)](https://github.com/khemissara/ku-polls/actions/workflows/python-package.yml)
+[![codecov](https://codecov.io/gh/khemissara/ku-polls/branch/main/graph/badge.svg?token=DGK6O9QCZC)](https://codecov.io/gh/khemissara/ku-polls)
 
 # Online Polls for Kasetsart University
 
