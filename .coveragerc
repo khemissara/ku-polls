@@ -7,5 +7,6 @@ omit =
     */__init__.py
     polls/migrations/*
     polls/templates/*
-    polls/tests/
+    polls/tests.py
     manage.py
+    polls/admin.py
