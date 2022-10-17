@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/khemissara/ku-polls/branch/main/graph/badge.svg?token=DGK6O9QCZC)](https://codecov.io/gh/khemissara/ku-polls)
+
 # Online Polls for Kasetsart University
 
 An application for conducting a poll or survey, written in Python using Django. It is based on the [Django Tutorial project](https://docs.djangoproject.com/en/4.1/intro/tutorial01/), with additional functionality.
